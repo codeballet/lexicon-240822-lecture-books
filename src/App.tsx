@@ -42,7 +42,7 @@ function App() {
       isbn: 9781250256409,
       genre: ["Reference", "Fantasy"],
       rating: 4,
-      cover: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F51Tx7mN5AML._SX331_BO1%2C204%2C203%2C200_.jpg&f=1&ipt=5f65d4b3e2e26e5c626e279cc59cbf3e44b7a1c394b5b0d7d5a0a5edec03e46b&ipo=images"
+      cover: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.KPRM86IcPfB9SE9x05FbkAHaLQ%26pid%3DApi%26h%3D160&f=1&ipt=6dd9ba7458cb891b43949f140d8943b8fb014d8421afbf7d8bfccd0222d1801d&ipo=images"
     },
     {
       title: "The World of Ice & Fire: The Untold History of Westeros and the Game of Thrones",
@@ -50,15 +50,15 @@ function App() {
       isbn: 9780553805444, 
       genre: ["Fantasy", "History"],
       rating: 4,
-      cover: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgeorgerrmartin.com%2Fgallery%2FImages%2FTWOIF_Cover.jpg&f=1&ipt=30c2a92c7c91c7814bbfa95b023c7d34d1c2db787c7b60119be77cb2d4493f00&ipo=images"
+      cover: "https://duckduckgo.com/i/6425e8ba.jpg"
     }
   ]);
   return (
     <main>
       <h2>My books:</h2>
       {
-        bookList.map((book) => (
-          <Book book={book}/>
+        bookList.map((book, i) => (
+          <Book key={i} book={book}/>
         ))
       }
     </main>

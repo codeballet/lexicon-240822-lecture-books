@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Book.css';
 interface BookInterface {
     title: string;
@@ -8,21 +9,46 @@ interface BookInterface {
     cover?: string;
 }
 function Book({ book }: { book: BookInterface }) {
+    const [edit, setEdit] = useState<boolean>(false);
+    const [title, setTitle] = useState<string>(book.title);
+    const [author, setAuthor] = useState<string>(book.author);
+    const [isbn, setIsbn] = useState<number>(book.isbn);
+    const [rating, setRating] = useState<number>(book.rating);
 
     let stars = [];
     for (let i = 0; i < book.rating; i++) {
         stars.push(<span key={i}>⭐</span>)
     }
 
+    const handleEdit = () => {
+        setEdit(false);
+    };
+
     return (
-        <article className="book-container">
-            <figure style={{ backgroundImage: `url(${book.cover})`}}></figure>
-            <h2>{book.title}</h2>
-            <p>{book.author}</p>
-            <p>{book.isbn}</p>
-            <p>Genre: {book.genre ? book.genre.join(", ") : "Not defined"}</p>
-            <p>{stars}</p>
+
+        <article className="book-container">{edit ?
+            <>
+                <figure style={{ backgroundImage: `url(${book.cover})` }}></figure>
+                <input defaultValue={title} onChange={(e) => setTitle(e.target.value)} />
+                <input defaultValue={author} onChange={(e) => setAuthor(e.target.value)} />
+                <input type='number' defaultValue={isbn} onChange={(e) => setIsbn(parseInt(e.target.value))} />
+                <p>Genre: {book.genre ? book.genre.join(", ") : "Not defined"}</p>
+                <input max="5" min="1" type='number' defaultValue={rating} onChange={(e) => setRating(parseInt(e.target.value))} />
+                <button onClick={handleEdit}>Confirm</button>
+            </>
+            :
+            <>
+                <figure style={{ backgroundImage: `url(${book.cover})` }}></figure>
+                <h2>{book.title}</h2>
+                <p>{book.author}</p>
+                <p>{book.isbn}</p>
+                <p>Genre: {book.genre ? book.genre.join(", ") : "Not defined"}</p>
+                <p>{stars}</p>
+                <button onClick={() => {setEdit(true)}}>Edit</button>
+            </>
+        }
         </article>
+
     )
 };
 export default Book;
