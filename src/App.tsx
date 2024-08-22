@@ -17,7 +17,6 @@ function App() {
       title: "Ulysses",
       author: "James Joyce",
       isbn: 9872345,
-      genre: ["Novel"],
       rating: 4,
       cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/JoyceUlysses2.jpg/440px-JoyceUlysses2.jpg",
     },

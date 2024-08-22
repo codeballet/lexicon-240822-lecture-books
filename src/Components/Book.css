@@ -1,0 +1,16 @@
+.book-container {
+    box-shadow: 1px 1px 1px 4px rgba(0, 0, 0, 0.485);
+    padding: 1rem;
+    max-width: 12rem;
+    background-color: white;
+    color: black;
+    margin: 1rem;
+    figure {
+        margin: 0;
+        width: 12rem;
+        height: 12rem;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
