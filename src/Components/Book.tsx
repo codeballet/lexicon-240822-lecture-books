@@ -8,11 +8,11 @@ interface BookInterface {
     rating: number;
     cover?: string;
 }
-function Book({ book }: { book: BookInterface }) {
+function Book({ book, updateBook }: { book: BookInterface, updateBook: (updatedBook: BookInterface) => void }) {
     const [edit, setEdit] = useState<boolean>(false);
     const [title, setTitle] = useState<string>(book.title);
     const [author, setAuthor] = useState<string>(book.author);
-    const [isbn, setIsbn] = useState<number>(book.isbn);
+    const [isbn, _] = useState<number>(book.isbn);
     const [rating, setRating] = useState<number>(book.rating);
 
     let stars = [];
@@ -21,6 +21,13 @@ function Book({ book }: { book: BookInterface }) {
     }
 
     const handleEdit = () => {
+        const updatedBook: BookInterface = {
+            title: title,
+            author: author,
+            isbn: isbn,
+            rating: rating,
+        }
+        updateBook(updatedBook);
         setEdit(false);
     };
 
@@ -31,7 +38,7 @@ function Book({ book }: { book: BookInterface }) {
                 <figure style={{ backgroundImage: `url(${book.cover})` }}></figure>
                 <input defaultValue={title} onChange={(e) => setTitle(e.target.value)} />
                 <input defaultValue={author} onChange={(e) => setAuthor(e.target.value)} />
-                <input type='number' defaultValue={isbn} onChange={(e) => setIsbn(parseInt(e.target.value))} />
+                <p>{book.isbn}</p>
                 <p>Genre: {book.genre ? book.genre.join(", ") : "Not defined"}</p>
                 <input max="5" min="1" type='number' defaultValue={rating} onChange={(e) => setRating(parseInt(e.target.value))} />
                 <button onClick={handleEdit}>Confirm</button>
@@ -44,7 +51,7 @@ function Book({ book }: { book: BookInterface }) {
                 <p>{book.isbn}</p>
                 <p>Genre: {book.genre ? book.genre.join(", ") : "Not defined"}</p>
                 <p>{stars}</p>
-                <button onClick={() => {setEdit(true)}}>Edit</button>
+                <button onClick={() => { setEdit(true) }}>Edit</button>
             </>
         }
         </article>

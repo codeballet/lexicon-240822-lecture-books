@@ -47,18 +47,26 @@ function App() {
     {
       title: "The World of Ice & Fire: The Untold History of Westeros and the Game of Thrones",
       author: "George R.R. Martin, Elio M. García Jr., Linda Antonsson",
-      isbn: 9780553805444, 
+      isbn: 9780553805444,
       genre: ["Fantasy", "History"],
       rating: 4,
       cover: "https://duckduckgo.com/i/6425e8ba.jpg"
     }
   ]);
+
+  function updateBookList(updatedBook: BookInterface) {
+    let index = bookList.findIndex((book) => book.isbn === updatedBook.isbn);
+    let updatedBookList = [...bookList];
+    updatedBookList.splice(index, 1, updatedBook);
+    setBookList(updatedBookList)
+  };
+
   return (
     <main>
       <h2>My books:</h2>
       {
         bookList.map((book, i) => (
-          <Book key={i} book={book}/>
+          <Book key={i} book={book} updateBook={updateBookList} />
         ))
       }
     </main>
