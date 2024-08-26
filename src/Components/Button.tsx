@@ -1,21 +1,19 @@
-interface BookInterface {
-    title: string;
-    author: string;
-    isbn: number;
-    genres?: Array<string>;
-    rating: number;
-    cover?: string;
-}
-
 interface buttonProps {
     buttonText: string;
     buttonFunction: () => void;
+    buttonClass?: string;
 }
 
-export default function Button({ buttonText, buttonFunction }: buttonProps) {
+export default function Button({
+    buttonClass,
+    buttonText,
+    buttonFunction,
+}: buttonProps) {
     return (
         <>
-            <button onClick={() => buttonFunction()}>{buttonText}</button>
+            <button className={buttonClass} onClick={() => buttonFunction()}>
+                {buttonText}
+            </button>
         </>
     );
 }

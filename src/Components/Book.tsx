@@ -84,7 +84,8 @@ function Book({
                             id="newRating"
                         />
                     </section>
-                    <button onClick={handleEdit}>Confirm</button>
+                    <Button buttonText="Confirm" buttonFunction={handleEdit} />
+                    {/* <button onClick={handleEdit}>Confirm</button> */}
                 </>
             ) : (
                 <>
@@ -103,13 +104,17 @@ function Book({
                         </p>
                         <p>{stars}</p>
                     </section>
-                    <button
+                    <Button
+                        buttonText="Edit"
+                        buttonFunction={() => setEdit(true)}
+                    />
+                    {/* <button
                         onClick={() => {
                             setEdit(true);
                         }}
                     >
                         Edit
-                    </button>
+                    </button> */}
                     <Button
                         buttonText="Ta bort"
                         buttonFunction={() => deleteBook(book)}

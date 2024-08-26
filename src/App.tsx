@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Book from "./Components/Book";
 import AddBook from "./Components/AddBook";
+import Button from "./Components/Button";
 
 interface BookInterface {
     title: string;
@@ -96,14 +97,19 @@ function App() {
         <>
             <header>
                 <h1>My book collection</h1>
-                <button
+                <Button
+                    buttonText="+"
+                    buttonClass="round-add-btn"
+                    buttonFunction={() => setshowAddBook(true)}
+                />
+                {/* <button
                     className="round-add-btn"
                     onClick={() => {
                         setshowAddBook(true);
                     }}
                 >
                     +
-                </button>
+                </button> */}
             </header>
 
             <main>
