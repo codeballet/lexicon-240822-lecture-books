@@ -9,6 +9,7 @@ interface BookInterface {
     cover?: string;
 }
 export default function AddBook({ addBookFunction, toggleAddView }: { addBookFunction: (bookToAdd: BookInterface) => void, toggleAddView: () => void }) {
+    // Set all variables as empty
     const [title, setTitle] = useState<string>('');
     const [author, setAuthor] = useState<string>('');
     const [isbn, setIsbn] = useState<number>(0);
@@ -16,6 +17,8 @@ export default function AddBook({ addBookFunction, toggleAddView }: { addBookFun
     const [genreToAdd, setGenreToAdd] = useState<string>('');
     const [rating, setRating] = useState<number>(5);
     const [cover, setCover] = useState<string>('');
+
+    // Create a book object
     const addBook = () => {
         let newBook = {
             title: title,
@@ -23,8 +26,9 @@ export default function AddBook({ addBookFunction, toggleAddView }: { addBookFun
             isbn: isbn,
             genres: genres,
             rating: rating,
-            cover: cover
-        }
+            cover: cover,
+        };
+        // Update the bookList state
         addBookFunction(newBook);
     };
     return (
