@@ -7,15 +7,15 @@ interface BookInterface {
     cover?: string;
 }
 
-export default function Button(
-    buttonClass: string,
-    buttonText: string
-    // buttonFunction: () => void,
-    // buttonBook: BookInterface
-) {
+interface buttonProps {
+    buttonText: string;
+    buttonFunction: () => void;
+}
+
+export default function Button({ buttonText, buttonFunction }: buttonProps) {
     return (
         <>
-            <button className={buttonClass}>{buttonText}</button>
+            <button onClick={() => buttonFunction()}>{buttonText}</button>
         </>
     );
 }

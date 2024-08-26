@@ -110,11 +110,11 @@ function Book({
                     >
                         Edit
                     </button>
-                    {/* <Button
-                        buttonClass={".book-container>button"}
-                        buttonText={"Ta bort"}
-                    /> */}
-                    <button onClick={() => deleteBook(book)}>Ta bort</button>
+                    <Button
+                        buttonText="Ta bort"
+                        buttonFunction={() => deleteBook(book)}
+                    />
+                    {/* <button onClick={() => deleteBook(book)}>Ta bort</button> */}
                 </>
             )}
         </article>
