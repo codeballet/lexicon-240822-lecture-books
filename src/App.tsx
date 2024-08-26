@@ -66,6 +66,16 @@ function App() {
         },
     ]);
 
+    // Delete a book from the list
+    function deleteBookFromList(bookToDelete: BookInterface) {
+        let index = bookList.findIndex(
+            (book) => book.isbn === bookToDelete.isbn
+        );
+        let updatedBookList = [...bookList];
+        updatedBookList.splice(index, 1);
+        setBookList(updatedBookList);
+    }
+
     // Takes a book and updates the list according to matching ISBN
     function updateBookList(updatedBook: BookInterface) {
         let index = bookList.findIndex(
@@ -99,7 +109,12 @@ function App() {
             <main>
                 <section className="bookList-container">
                     {bookList.map((book, i) => (
-                        <Book key={i} book={book} updateBook={updateBookList} />
+                        <Book
+                            key={i}
+                            book={book}
+                            deleteBook={deleteBookFromList}
+                            updateBook={updateBookList}
+                        />
                     ))}
                 </section>
             </main>

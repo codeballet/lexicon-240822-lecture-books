@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
+import Button from "./Button";
+
 import "./Book.css";
 interface BookInterface {
     title: string;
@@ -10,9 +12,11 @@ interface BookInterface {
 }
 function Book({
     book,
+    deleteBook,
     updateBook,
 }: {
     book: BookInterface;
+    deleteBook: (book: BookInterface) => void;
     updateBook: (updatedBook: BookInterface) => void;
 }) {
     // Set states for all book features
@@ -106,6 +110,11 @@ function Book({
                     >
                         Edit
                     </button>
+                    {/* <Button
+                        buttonClass={".book-container>button"}
+                        buttonText={"Ta bort"}
+                    /> */}
+                    <button onClick={() => deleteBook(book)}>Ta bort</button>
                 </>
             )}
         </article>
